@@ -37,10 +37,10 @@ pip install .
 ```python
 from agentmon import track
 
-@track(provider="anthropic", model="claude-sonnet-4-20250514")
+@track(provider="anthropic", model="claude-sonnet-4-6")
 def ask_claude(prompt):
     response = client.messages.create(
-        model="claude-sonnet-4-20250514",
+        model="claude-sonnet-4-6",
         messages=[{"role": "user", "content": prompt}],
     )
     return response  # Tokens auto-extracted from response.usage
@@ -52,9 +52,9 @@ def ask_claude(prompt):
 from agentmon import UsageTracker
 
 tracker = UsageTracker()
-with tracker.track("anthropic", "claude-sonnet-4-20250514") as t:
+with tracker.track("anthropic", "claude-sonnet-4-6") as t:
     response = client.messages.create(
-        model="claude-sonnet-4-20250514",
+        model="claude-sonnet-4-6",
         messages=[{"role": "user", "content": "Hello!"}],
     )
     t.record(
@@ -95,16 +95,22 @@ agentmon config
 
 | 服务商 | 模型 | 输入 ($/1M tokens) | 输出 ($/1M tokens) |
 |----------|-------|---------------------|----------------------|
-| Anthropic | Claude Opus 4 | $15.00 | $75.00 |
-| Anthropic | Claude Sonnet 4 | $3.00 | $15.00 |
-| Anthropic | Claude 3.5 Haiku | $0.80 | $4.00 |
-| OpenAI | GPT-4o | $2.50 | $10.00 |
-| OpenAI | GPT-4o Mini | $0.15 | $0.60 |
+| Anthropic | Claude Opus 4.8 | $5.00 | $25.00 |
+| Anthropic | Claude Sonnet 4.6 | $3.00 | $15.00 |
+| Anthropic | Claude Haiku 4.5 | $1.00 | $5.00 |
+| OpenAI | GPT-5.5 | $5.00 | $30.00 |
+| OpenAI | GPT-5.4 | $2.50 | $15.00 |
+| OpenAI | GPT-5.4 Mini | $0.75 | $4.50 |
+| OpenAI | GPT-5.4 Nano | $0.20 | $1.25 |
+| OpenAI | Deep Research | $5.00 | $20.00 |
+| OpenAI | Deep Research Mini | $1.00 | $4.00 |
+| Google | Gemini 3.5 Flash | $1.50 | $9.00 |
 | Google | Gemini 2.5 Pro | $1.25 | $10.00 |
-| Google | Gemini 2.5 Flash | $0.15 | $0.60 |
-| DeepSeek | DeepSeek V3 | $0.27 | $1.10 |
-| DeepSeek | DeepSeek R1 | $0.55 | $2.19 |
-| Moonshot | Kimi V1 8K | $1.44 | $1.44 |
+| Google | Gemini 2.5 Flash | $0.30 | $2.50 |
+| Google | Gemini 3.1 Flash-Lite | $0.25 | $1.50 |
+| DeepSeek | DeepSeek V4 Flash | $0.14 | $0.28 |
+| DeepSeek | DeepSeek V4 Pro | $1.74 | $3.48 |
+| Moonshot | Kimi K2.6 | $0.684 | $3.42 |
 
 ## 配置
 
