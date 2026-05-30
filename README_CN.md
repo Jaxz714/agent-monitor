@@ -2,25 +2,25 @@
 
 # Agent Monitor
 
-Cost and usage monitoring for AI API calls. Track spending, set budgets, compare providers, never overspend again.
+AI API 调用的成本与用量监控工具。追踪支出、设置预算、对比服务商，从此告别超支。
 
-## Features
+## 功能特性
 
-- **Automatic Tracking** - Wrap any LLM API call to log provider, model, tokens, cost, latency, and success/failure
-- **SQLite Storage** - All data stored locally at `~/.agent-monitor/usage.db`
-- **Dashboard** - Daily, weekly, monthly, and yearly cost breakdowns
-- **Budget Alerts** - Set monthly budgets and get warned when approaching limits
-- **Provider Comparison** - See which provider is cheapest for your usage pattern
-- **CSV/JSON Export** - Export your usage data for analysis
-- **Python Integration** - Use as a decorator or context manager
+- **自动追踪** - 包装任意 LLM API 调用，自动记录服务商、模型、token 用量、费用、延迟及成功/失败状态
+- **SQLite 存储** - 所有数据本地存储于 `~/.agent-monitor/usage.db`
+- **数据看板** - 支持按日、周、月、年查看费用明细
+- **预算告警** - 设置月度预算，接近上限时自动提醒
+- **服务商对比** - 查看哪个服务商最适合你的使用模式
+- **CSV/JSON 导出** - 导出用量数据用于进一步分析
+- **Python 集成** - 支持装饰器和上下文管理器两种用法
 
-## Installation
+## 安装
 
 ```bash
 pip install agent-monitor
 ```
 
-Or install from source:
+或从源码安装：
 
 ```bash
 git clone https://github.com/Jaxz714/agent-monitor.git
@@ -28,11 +28,11 @@ cd agent-monitor
 pip install .
 ```
 
-## Quick Start
+## 快速开始
 
 ### Python API
 
-**Decorator:**
+**装饰器：**
 
 ```python
 from agentmon import track
@@ -46,7 +46,7 @@ def ask_claude(prompt):
     return response  # Tokens auto-extracted from response.usage
 ```
 
-**Context Manager:**
+**上下文管理器：**
 
 ```python
 from agentmon import UsageTracker
@@ -63,37 +63,37 @@ with tracker.track("anthropic", "claude-sonnet-4-20250514") as t:
     )
 ```
 
-### CLI Commands
+### CLI 命令
 
 ```bash
-# Show cost dashboard (monthly view by default)
+# 显示费用看板（默认按月查看）
 agentmon dashboard
 agentmon dashboard --period week
 
-# Budget management
-agentmon budget set 100      # Set $100 monthly budget
-agentmon budget status       # Check remaining budget
+# 预算管理
+agentmon budget set 100      # 设置 $100 月度预算
+agentmon budget status       # 查看剩余预算
 
-# Export data
+# 导出数据
 agentmon export --format csv
 agentmon export --format json --output ~/my-usage.json
 
-# Compare providers
+# 对比服务商
 agentmon providers
 
-# View recent calls
+# 查看最近调用记录
 agentmon history
 agentmon history --limit 50
 
-# Show configuration
+# 查看配置
 agentmon config
 ```
 
-## Pricing Data
+## 定价数据
 
-Includes built-in pricing for common models:
+内置常用模型的定价信息：
 
-| Provider | Model | Input ($/1M tokens) | Output ($/1M tokens) |
+| 服务商 | 模型 | 输入 ($/1M tokens) | 输出 ($/1M tokens) |
 |----------|-------|---------------------|----------------------|
 | Anthropic | Claude Opus 4 | $15.00 | $75.00 |
 | Anthropic | Claude Sonnet 4 | $3.00 | $15.00 |
@@ -106,10 +106,10 @@ Includes built-in pricing for common models:
 | DeepSeek | DeepSeek R1 | $0.55 | $2.19 |
 | Moonshot | Kimi V1 8K | $1.44 | $1.44 |
 
-## Configuration
+## 配置
 
-Configuration is stored at `~/.agent-monitor/config.yaml`. You can also edit the defaults in `config/default.yaml`.
+配置文件存储于 `~/.agent-monitor/config.yaml`。也可以编辑 `config/default.yaml` 修改默认值。
 
-## License
+## 许可证
 
 MIT License - Copyright (c) 2026 Jaxz714
