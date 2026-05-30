@@ -1,0 +1,15 @@
+# Agent Monitor Configuration
+database:
+  path: "~/.agent-monitor/usage.db"
+
+budget:
+  monthly_limit: null  # Set to a dollar amount, e.g. 100.00
+  warn_threshold: 0.8  # Warn at 80% of budget
+
+export:
+  default_format: "csv"
+  output_dir: "~/.agent-monitor/exports"
+
+display:
+  currency: "USD"
+  date_format: "%Y-%m-%d"

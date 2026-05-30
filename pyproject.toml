@@ -1,0 +1,38 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "agent-monitor"
+version = "0.1.0"
+description = "Cost and usage monitoring for AI API calls — track spending, set budgets, compare providers, never overspend again."
+readme = "README.md"
+license = {text = "MIT"}
+requires-python = ">=3.10"
+authors = [
+    {name = "Jaxz714"},
+]
+keywords = ["ai", "llm", "monitoring", "cost", "api", "tracking"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+]
+dependencies = [
+    "click>=8.0",
+    "pyyaml>=6.0",
+    "rich>=13.0",
+]
+
+[project.scripts]
+agentmon = "agentmon.cli:cli"
+
+[project.urls]
+Homepage = "https://github.com/Jaxz714/agent-monitor"
+Repository = "https://github.com/Jaxz714/agent-monitor"
+Issues = "https://github.com/Jaxz714/agent-monitor/issues"
